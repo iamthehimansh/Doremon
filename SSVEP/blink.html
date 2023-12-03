@@ -1,0 +1,156 @@
+
+</html>
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        body{
+            height: 100vh;
+    justify-content: center;
+    display: flex;
+    align-items: center;
+        }
+        .container {
+            max-width: 400px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            
+        }
+        
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+        
+        .bulb-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        
+        .bulb {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            background-color: #000;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            margin-right: 20px;
+            margin-left: 20px;
+            opacity: 0;
+            /* animation: flicker 1s infinite; */
+        }
+        .full{
+            opacity: 1;
+        }
+        .bulb.on {
+            background-color: #ffdd57;
+            animation: glow 1s infinite alternate;
+        }
+        
+        .button {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #333;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        
+        .button:hover {
+            background-color: #555;
+        }
+        
+        .image-container {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        
+        .image {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            object-fit: cover;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        .text {
+            text-align: center;
+            color: #555;
+            font-size: 18px;
+            margin-bottom: 20px;
+        }
+        
+        @keyframes flicker {
+        
+            0% {
+                opacity: 1;
+            }
+            50% {
+                opacity: 0.5;
+            }
+            100% {
+                opacity: 1;
+            }
+        }
+        @keyframes glow {
+        0% {
+            box-shadow: 0 0 10px rgba(255, 221, 87, 0.5);
+        }
+        50% {
+            box-shadow: 0 0 20px rgba(255, 221, 87, 1);
+        }
+        100% {
+            box-shadow: 0 0 10px rgba(255, 221, 87, 0.5);
+        }
+    }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- <h1>Smart Home Control</h1> -->
+        
+        <div class="image-container">
+            <img class="image bulb" id="bulb" src="./b.png" alt="Image">
+        </div>
+<!--         
+        <div class="text">
+            This is a beautiful smart home control interface.
+        </div> -->
+        
+        <!-- <div class="bulb-container">
+            <div class=""></div>
+            <button class="button" onclick="toggleBulb()">Toggle Bulb</button>
+        </div> -->
+    </div>
+    
+    <script>
+        function toggleBulb() {
+            var bulb = document.querySelector('.bulb');
+            bulb.classList.toggle('on');
+        }
+        function flicker(idE,time){
+
+        const box=document.getElementById(idE)
+        var color=1
+        setInterval(()=>{
+            if(color){
+
+                box.classList.add("full")
+                color=0
+            }else{
+                color=1
+            box.classList.remove("full")
+            }
+
+        },time)
+        }
+        flicker("bulb",100)
+    </script>
+</body>
+</html>

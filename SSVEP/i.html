@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box{
+            color: "white";
+            height: 500px;
+            width: 500px;
+            border-radius: 50%;
+            margin: 50px;
+        }
+        .blue{
+            color: blue;
+            background-color: blue;
+        }
+        center{
+            display: flex;
+            height: 100vh;
+            flex-direction: row;
+        }
+    </style>
+</head>
+<body>
+    <center>
+
+        <div id="box" class="box"> </div>
+        <div id="box2" class="box"> </div>
+    </center>
+    <script>
+        function flicker(idE,time){
+
+            const box=document.getElementById(idE)
+            var color=1
+            setInterval(()=>{
+                if(color){
+    
+                    box.classList.add("blue")
+                    color=0
+                }else{
+                    color=1
+                box.classList.remove("blue")
+                }
+    
+            },time)
+        }
+        flicker("box",100)
+        flicker("box2",300)
+    </script>
+</body>
+</html>
