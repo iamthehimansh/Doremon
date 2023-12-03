@@ -114,7 +114,7 @@ app = QApplication([])
 app.keyPressEvent = keyPressEvent
 
 
-viewer = SerialPlotter(channels, 2500, '/dev/tty.usbserial-0001')
+viewer = SerialPlotter(channels, 2500, '/dev/cu.usbmodem2101')
 
 def update():
     pass  # Nothing to do here; updates are handled by the SerialPlotter

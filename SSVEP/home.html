@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    .container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      grid-template-rows: repeat(2, 1fr);
+      gap: 10px;
+      padding: 20px;
+    }
+
+    .box {
+      background-color: lightgray;
+      border: 1px solid gray;
+      padding: 20px;
+      text-align: center;
+      position: relative;
+      height: 200px;
+      width: 200px;
+      display: flex;
+        justify-content: center;
+        align-items: center;
+        margin: 60px;
+    }
+
+    .name {
+      text-align: center;
+      font-size: 24px;
+      margin-bottom: 20px;
+    }
+
+    .color-box {
+      
+      width: 10px;
+      height: 10px;
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      border-radius: 50%;
+    }
+    .l{
+        top: 10px;
+        left: 10px;
+    }
+    .red{
+      background-color: red !important;
+    }
+    .glow{
+      box-shadow: 0 0 10px 10px red;
+
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="grid">
+      <div class="box" id="b1"><div class="name">Bedroom</div>
+    <div class="color-box l" id="box1"></div></div>
+      <div class="box" id="b2"><div class="name" >Bathroom</div>
+    <div class="color-box"id="box2"></div></div>
+      <div class="box" id="b3"><div class="name">Dining area</div>
+    <div class="color-box l" id="box3"></div></div>
+      <div class="box" id="b4"><div class="name">Toilet</div>
+    <div class="color-box" id="box4"></div></div>
+    </div>
+    
+  </div>
+  <script>
+    function flicker(idE,time){
+
+const box=document.getElementById(idE)
+var color=0
+setInterval(()=>{
+    if(color){
+
+        box.classList.add("red")
+        color=0
+    }else{
+        color=1
+    box.classList.remove("red")
+    }
+
+},time)
+}
+flicker("box1",142)
+flicker("box2",62)
+flicker("box3",44)
+flicker("box4",30)
+setInterval(()=>{
+  fetch("./data.json").then((res)=>res.json().then(
+    (data)=>{
+      // data=> 1:0,2:1,3:0,4:1
+      // loop to the data
+      for(var i=1;i<=4;i++){
+        if(data[i]){
+          document.getElementById("b"+i).classList.add("glow")
+        }else{
+          document.getElementById("b"+i).classList.remove("glow")
+        }
+      }
+    }
+  ))
+
+},500)
+  </script>
+</body>
+</html>
